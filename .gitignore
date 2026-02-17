@@ -261,3 +261,5 @@ paket-files/
 __pycache__/
 *.pyc
 
+# Ignore development settings (secrets, local configs)
+/src/TelegramBot.Api/appsettings.Development.json

@@ -1,38 +1,65 @@
-# Telegram Bot Clean Architecture Boilerplate
+# TelegramBot — Clean Architecture (simple)
 
-This is a boilerplate for a Telegram Bot using ASP.NET Core, Clean Architecture, MediatR, and EF Core with PostgreSQL.
+A minimal, clean-architecture Telegram bot built with ASP.NET Core, MediatR, and EF Core (PostgreSQL).
 
-## Prerequisites
+## Quick overview
 
-- .NET 9.0 SDK
-- PostgreSQL
-- Telegram Bot Token
+- Language: C# / .NET 9
+- Database: PostgreSQL
+- Entry point: `src/TelegramBot.Api`
+- Webhook endpoint: `POST /api/telegram/update`
 
-## Getting Started
+## Quick start
 
-1.  **Configure Database and Bot Token**:
-    Update `src/TelegramBot.Api/appsettings.json` with your PostgreSQL connection string and Telegram Bot Token.
+1. Clone the repo:
 
-2.  **Apply Migrations**:
-    Open a terminal in the solution root and run:
-    ```bash
-    dotnet tool install --global dotnet-ef
-    dotnet ef migrations add InitialCreate -p src/TelegramBot.Infrastructure -s src/TelegramBot.Api
-    dotnet ef database update -p src/TelegramBot.Infrastructure -s src/TelegramBot.Api
-    ```
+   ```bash
+   git clone <repo-url>
+   cd TelegramBot
+   ```
 
-3.  **Run the Application**:
-    ```bash
-    dotnet run --project src/TelegramBot.Api
-    ```
+2. Configure settings:
 
-4.  **Set WebHook**:
-    You need to set the WebHook for your bot to point to your deployed URL (e.g., using ngrok for local development).
-    The endpoint is `POST /api/telegram/update`.
+   - Edit `src/TelegramBot.Api/appsettings.json` (or `appsettings.Development.json`) and set `ConnectionStrings` and `Telegram:BotToken`.
 
-## Structure
+3. Database migrations (automatic)
 
-- **TelegramBot.Domain**: Entities and enterprise logic.
-- **TelegramBot.Application**: Use cases, MediatR commands/queries, interfaces.
-- **TelegramBot.Infrastructure**: Persistence (EF Core), External Services (Telegram.Bot).
-- **TelegramBot.Api**: Web API entry point, Controllers.
+   - The application applies any pending EF Core migrations automatically at startup (`db.Database.MigrateAsync()` in `src/TelegramBot.Api/Program.cs`). The repository already contains the initial migration under `src/TelegramBot.Infrastructure/Persistence/Migrations/` so the database will be created/updated when you run the API.
+
+   - When you should run the EF CLI manually:
+     - To *create* a new migration after changing domain/models:
+       ```bash
+       dotnet tool install --global dotnet-ef
+       dotnet ef migrations add <Name> -p src/TelegramBot.Infrastructure -s src/TelegramBot.Api
+       ```
+     - To *apply* migrations manually (e.g., in CI/CD or if you disable auto-migrate in production):
+       ```bash
+       dotnet ef database update -p src/TelegramBot.Infrastructure -s src/TelegramBot.Api
+       ```
+     - To troubleshoot migration errors separately before runtime.
+
+   - For normal local development: just run the API (`dotnet run --project src/TelegramBot.Api`) and migrations will be applied automatically.
+
+4. Run the API locally:
+
+   ```bash
+   dotnet run --project src/TelegramBot.Api
+   ```
+
+5. For local webhook testing use `ngrok` and point your bot webhook to `https://<ngrok-id>.ngrok.io/api/telegram/update`.
+
+## Project layout
+
+- `TelegramBot.Domain` — entities & enums
+- `TelegramBot.Application` — use cases, DTOs, interfaces
+- `TelegramBot.Infrastructure` — EF Core, persistence, external services
+- `TelegramBot.Api` — controllers, configuration, startup
+
+## Contributing
+
+Issues and PRs are welcome — keep changes small and focused.
+
+## Notes
+
+- Ensure `.NET 9 SDK` and `PostgreSQL` are installed before running.
+
