@@ -1,0 +1,48 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TelegramBot\\n"
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Language: fa\\n"
+
+msgid "menu.buy"
+msgstr "🛒 خرید اشتراک"
+
+msgid "menu.profile"
+msgstr "👤 پروفایل"
+
+msgid "menu.wallet"
+msgstr "💰 کیف پول"
+
+msgid "menu.support"
+msgstr "🎫 پشتیبانی"
+
+msgid "menu.help"
+msgstr "❓ راهنما"
+
+msgid "admin.users"
+msgstr "👥 مدیریت کاربران"
+
+msgid "admin.servers"
+msgstr "🖥 مدیریت سرورها"
+
+msgid "admin.plans"
+msgstr "📦 مدیریت پلن‌ها"
+
+msgid "admin.tickets"
+msgstr "🎟 مدیریت تیکت‌ها"
+
+msgid "menu.back_main"
+msgstr "🔙 بازگشت به منو اصلی"
+
+msgid "pay.card"
+msgstr "💳 کارت به کارت"
+
+msgid "pay.crypto"
+msgstr "🪙 ارز دیجیتال"
+
+msgid "menu.back"
+msgstr "🔙 بازگشت"
+
+msgid "greeting"
+msgstr "👋 سلام و خوش آمدید!\n\nبه ربات فروش فیلترشکن ما خوش اومدید 🚀\nاینجا می‌تونید به‌راحتی سرویس‌های پرسرعت، امن و پایدار رو مشاهده و خریداری کنید.\n\n📌 برای شروع، یکی از گزینه‌های منو رو انتخاب کنید.\n💬 در صورت داشتن هرگونه سوال، پشتیبانی در کنار شماست."
+

@@ -1,0 +1,48 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TelegramBot\\n"
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Language: en\\n"
+
+msgid "menu.buy"
+msgstr "🛒 Buy Subscription"
+
+msgid "menu.profile"
+msgstr "👤 Profile"
+
+msgid "menu.wallet"
+msgstr "💰 Wallet"
+
+msgid "menu.support"
+msgstr "🎫 Support"
+
+msgid "menu.help"
+msgstr "❓ Help"
+
+msgid "admin.users"
+msgstr "👥 User Management"
+
+msgid "admin.servers"
+msgstr "🖥 Server Management"
+
+msgid "admin.plans"
+msgstr "📦 Plan Management"
+
+msgid "admin.tickets"
+msgstr "🎟 Ticket Management"
+
+msgid "menu.back_main"
+msgstr "🔙 Back to Main Menu"
+
+msgid "pay.card"
+msgstr "💳 Card to Card"
+
+msgid "pay.crypto"
+msgstr "🪙 Crypto"
+
+msgid "menu.back"
+msgstr "🔙 Back"
+
+msgid "greeting"
+msgstr "👋 Hello and welcome!\n\nWelcome to our VPN sales bot 🚀\nHere you can easily browse and purchase fast, secure, and stable services.\n\n📌 To get started, please choose an option from the menu.\n💬 If you have any questions, our support team is here to help."
+
