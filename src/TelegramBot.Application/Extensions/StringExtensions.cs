@@ -21,6 +21,20 @@ namespace TelegramBot.Application.Extensions
             return ShortId.Generate(options);
         }
 
+        public static string? GetStartReferral(this string message)
+        {
+            if (string.IsNullOrWhiteSpace(message))
+                return null;
+
+            // "/start" or "/start ref_xxx"
+            var parts = message.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            if (parts.Length < 2)
+                return null;
+
+            return parts[1];
+        }
+
     }
 
 }

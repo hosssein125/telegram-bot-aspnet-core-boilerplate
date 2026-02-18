@@ -10,8 +10,8 @@ msgstr "🛒 Buy Subscription"
 msgid "menu.profile"
 msgstr "👤 Profile"
 
-msgid "menu.wallet"
-msgstr "💰 Wallet"
+msgid "menu.orders"
+msgstr "📦 Orders"
 
 msgid "menu.support"
 msgstr "🎫 Support"
@@ -43,6 +43,12 @@ msgstr "🪙 Crypto"
 msgid "menu.back"
 msgstr "🔙 Back"
 
+msgid "menu.add_balance"
+msgstr "➕ Add Balance"
+
 msgid "greeting"
 msgstr "👋 Hello and welcome!\n\nWelcome to our VPN sales bot 🚀\nHere you can easily browse and purchase fast, secure, and stable services.\n\n📌 To get started, please choose an option from the menu.\n💬 If you have any questions, our support team is here to help."
+
+msgid "customer-profile"
+msgstr "👤 *Your Profile*\n\n🧾 First name: {0}\n🧾 Last name: {1}\n🆔 Telegram ID: {2}\n👤 Username: @{3}\n\n💰 Balance: {4}\n📦 Orders count: {5}\n📅 Joined: {6} days ago"
 

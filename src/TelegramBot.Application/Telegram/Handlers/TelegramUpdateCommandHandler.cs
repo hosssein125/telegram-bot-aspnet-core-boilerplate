@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using TelegramBot.Application.Common.Interfaces;
-using TelegramBot.Application.Common.Interfaces.Repositories;
 using TelegramBot.Application.Common.Models.Telegram;
 using TelegramBot.Application.Telegram.Commands;
 using TelegramBot.Application.TelegramUsers.Dtos;
@@ -11,14 +10,14 @@ public class TelegramUpdateCommandHandler
     : IRequestHandler<TelegramUpdateCommand>
 {
     private readonly IEnumerable<ITelegramUpdateHandler> _handlers;
-    private readonly IEfTelegramUserRepository _users;
+    private readonly IDbUnitOfWork _dbUnitOfWork;
 
     public TelegramUpdateCommandHandler(
         IEnumerable<ITelegramUpdateHandler> handlers,
-        IEfTelegramUserRepository users)
+        IDbUnitOfWork dbUnitOfWork)
     {
         _handlers = handlers;
-        _users = users;
+        _dbUnitOfWork = dbUnitOfWork;
     }
 
     public async Task Handle(
@@ -27,9 +26,9 @@ public class TelegramUpdateCommandHandler
     {
         var context = TelegramUpdateContext.From(request.Update);
 
-        var user = await _users.GetByTelegramIdAsync(
+        var user = await _dbUnitOfWork.TelegramUsers.GetByTelegramIdAsync(
             context.TelegramUserId,
-            new TelegramUserIncludes(),
+            new TelegramUserIncludes() { Orders = true },
             ct);
 
         foreach (var handler in _handlers)

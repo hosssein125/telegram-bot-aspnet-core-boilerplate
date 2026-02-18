@@ -3,7 +3,7 @@ namespace TelegramBot.Domain.Enums
     public enum UserState
     {
         MainMenu = 1,
-        BalanceMenu = 2,
+        ProfileMenu = 2,
         SelectPaymentMethod = 3,
         WaitingForPaymentReceipt = 4,
         ViewingPlans = 5,

@@ -12,7 +12,7 @@ namespace TelegramBot.Domain.Entities
 
         public long? InvitedByUserId { get; set; }
         public decimal WalletBalance { get; set; }
-        public UserRole Role { get; set; } = UserRole.Normal;
+        public UserRole Role { get; set; } = UserRole.Customer;
 
         public UserState State { get; set; } = UserState.MainMenu;
         public string StateData { get; set; } = "{}"; // JSON for temporary state data
