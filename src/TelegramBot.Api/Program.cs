@@ -1,7 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using TelegramBot.Application;
+using TelegramBot.Application.Common.Interfaces;
+using TelegramBot.Application.Common.Settings;
+using TelegramBot.Domain.Enums;
 using TelegramBot.Infrastructure;
+using TelegramBot.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,18 +44,27 @@ if (app.Environment.IsDevelopment())
 using (var scope = app.Services.CreateScope())
 {
 
-    var db = scope.ServiceProvider.GetRequiredService<TelegramBot.Infrastructure.Persistence.ApplicationDbContext>();
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     await db.Database.MigrateAsync();
 
-    var settings = scope.ServiceProvider.GetRequiredService<TelegramBot.Application.Common.Interfaces.ISettingsService>();
-    var lang = await settings.GetAsync(TelegramBot.Application.Common.Settings.SettingsKeys.LanguageCode) ?? "";
+    var settings = scope.ServiceProvider.GetRequiredService<ISettingsService>();
+    var lang = await settings.GetAsync(SettingsKeys.LanguageCode) ?? "";
     if (string.IsNullOrWhiteSpace(lang))
-        await settings.SetAsync(TelegramBot.Application.Common.Settings.SettingsKeys.LanguageCode, "fa");
+        await settings.SetAsync(SettingsKeys.LanguageCode, "fa");
 
-    var adminId = await settings.GetAsync(TelegramBot.Application.Common.Settings.SettingsKeys.AdminTelegramId) ?? "";
+    var adminId = await settings.GetAsync(SettingsKeys.AdminTelegramId) ?? "";
     if (string.IsNullOrWhiteSpace(adminId))
-        await settings.SetAsync(TelegramBot.Application.Common.Settings.SettingsKeys.AdminTelegramId, "");
+        await settings.SetAsync(SettingsKeys.AdminTelegramId, "");
+
+    var referralBonusAmount = await settings.GetAsync(SettingsKeys.ReferralBonusAmount) ?? "";
+    if (string.IsNullOrWhiteSpace(referralBonusAmount))
+        await settings.SetAsync(SettingsKeys.ReferralBonusAmount, "0");
+
+    var referralBonusType = await settings.GetAsync(SettingsKeys.ReferralBonusType) ?? "";
+    if (string.IsNullOrWhiteSpace(referralBonusType))
+        await settings.SetAsync(SettingsKeys.ReferralBonusType, ReferralBonusType.Constant.ToString());
 }
+
 
 //app.UseHttpsRedirection();
 

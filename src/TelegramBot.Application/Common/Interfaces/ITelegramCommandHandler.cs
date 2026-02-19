@@ -4,9 +4,9 @@ namespace TelegramBot.Application.Common.Interfaces
 {
     public interface ITelegramUpdateHandler
     {
-        bool CanHandle(TelegramUser user, TelegramUpdateContext context);
+        bool CanHandle(TelegramUser? user, TelegramUpdateContext context);
         Task HandleAsync(
-            TelegramUser user,
+            TelegramUser? user,
             TelegramUpdateContext telegramContext,
             CancellationToken ct);
     }

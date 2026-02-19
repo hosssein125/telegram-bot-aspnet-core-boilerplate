@@ -7,11 +7,11 @@ namespace TelegramBot.Domain.Entities
     {
         public string Title { get; set; } = string.Empty;
         public bool IsActive { get; set; } = true;
-        
+
         public int ServerId { get; set; }
         public Server? Server { get; set; }
-        
-        public UserRole TargetUserRole { get; set; } = UserRole.Normal; // Vendors or Normal users
+
+        public UserRole TargetUserRole { get; set; } = UserRole.Customer; // Vendors or Normal users
 
         public ICollection<Plan> Plans { get; set; } = new List<Plan>();
     }

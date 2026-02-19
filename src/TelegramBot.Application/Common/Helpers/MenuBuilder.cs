@@ -1,4 +1,5 @@
 using Telegram.Bot.Types.ReplyMarkups;
+using TelegramBot.Application.Common.Constants;
 using TelegramBot.Application.Common.Interfaces;
 using TelegramBot.Application.Common.Localization;
 
@@ -13,16 +14,28 @@ namespace TelegramBot.Application.Common.Helpers
                 new[]
                 {
                     InlineKeyboardButton.WithCallbackData(await localization.TranslateAsync(TranslationKeys.MenuBuy), "menu_buy"),
-                    InlineKeyboardButton.WithCallbackData(await localization.TranslateAsync(TranslationKeys.MenuProfile), "menu_profile")
+                    InlineKeyboardButton.WithCallbackData(await localization.TranslateAsync(TranslationKeys.MenuOrders), "menu_orders")
                 },
                 new[]
                 {
-                    InlineKeyboardButton.WithCallbackData(await localization.TranslateAsync(TranslationKeys.MenuWallet), "menu_wallet"),
+                    InlineKeyboardButton.WithCallbackData(await localization.TranslateAsync(TranslationKeys.MenuProfile), BotCommands.ProfileMenu),
                     InlineKeyboardButton.WithCallbackData(await localization.TranslateAsync(TranslationKeys.MenuSupport), "menu_support")
                 },
                 new[]
                 {
                     InlineKeyboardButton.WithCallbackData(await localization.TranslateAsync(TranslationKeys.MenuHelp), "menu_help")
+                }
+            });
+        }
+
+        public static async Task<InlineKeyboardMarkup> CreateProfileMenu(ILocalizationService localization)
+        {
+            return new InlineKeyboardMarkup(new[]
+            {
+                new[]
+                {
+                    InlineKeyboardButton.WithCallbackData(await localization.TranslateAsync(TranslationKeys.MenuBackMain), BotCommands.MainMenu),
+                    InlineKeyboardButton.WithCallbackData(await localization.TranslateAsync(TranslationKeys.MenuAddBalance), BotCommands.AddBalanceMenu)
                 }
             });
         }
