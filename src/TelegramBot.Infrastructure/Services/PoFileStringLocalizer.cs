@@ -107,8 +107,23 @@ namespace TelegramBot.Infrastructure.Services
             }
         }
 
-        public LocalizedString this[string name, params object[] arguments] =>
-            new LocalizedString(name, string.Format(this[name].Value, arguments), this[name].ResourceNotFound);
+        public LocalizedString this[string name, params object[] arguments]
+        {
+            get
+            {
+                // Replace null or empty arguments with translated "unknown"
+                var processedArgs = arguments.Select(arg =>
+                {
+                    if (arg == null || (arg is string str && string.IsNullOrWhiteSpace(str)))
+                    {
+                        return this["unknown"].Value;
+                    }
+                    return arg;
+                }).ToArray();
+
+                return new LocalizedString(name, string.Format(this[name].Value, processedArgs), this[name].ResourceNotFound);
+            }
+        }
 
         public IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures)
         {
