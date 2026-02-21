@@ -8,7 +8,8 @@ namespace TelegramBot.Domain.Enums
         WaitingForPaymentReceipt = 4,
         ViewingPlans = 5,
         SelectingServer = 6,
-        WaitingForTicketMessage = 7
+        WaitingForTicketMessage = 7,
+        SupportMenu = 8,
         // Add more states as needed
     }
 }

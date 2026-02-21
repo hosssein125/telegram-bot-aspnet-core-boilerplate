@@ -24,13 +24,39 @@ namespace TelegramBot.Application.Telegram.Handlers
             await dbUnitOfWork.CommitAsync();
 
             // Create Profile Caption
-            var profileCaption = await localization.TranslateAsync(TranslationKeys.CustomerProfile,
+            var profileCaption = await localization.TranslateAsync(TranslationKeys.CaptionCustomerProfile,
                 [user.FirstName, user.LastName, user.TelegramId, user.TelegramUsername, user.WalletBalance, user.Orders.Count, DateTime.Now.Subtract(user.CreatedAt).Days]);
 
             // Send profile to customer
             if (user.Role == UserRole.Customer)
                 await telegramService.SendInlineMenuAsync(telegramContext.ChatId, profileCaption
                     , await MenuBuilder.CreateProfileMenu(localization), cancellationToken);
+
+
+        }
+
+    }
+    public class SupportQueryHandler(IDbUnitOfWork dbUnitOfWork, ITelegramService telegramService, ILocalizationService localization) : ITelegramUpdateHandler
+    {
+        public bool CanHandle(TelegramUser? user, TelegramUpdateContext ctx)
+        {
+            return user?.Role != UserRole.Admin && ctx is { IsCallback: true, CallbackData: BotCommands.SupportMenu };
+        }
+
+        public async Task HandleAsync(TelegramUser? user, TelegramUpdateContext telegramContext, CancellationToken cancellationToken)
+        {
+
+            // Set State To Profile Menu
+            user.State = UserState.SupportMenu;
+            await dbUnitOfWork.CommitAsync();
+
+            // Create support Caption
+            var supportCaption = await localization.TranslateAsync(TranslationKeys.CaptionSupport);
+
+            // Send profile to customer
+            if (user.Role == UserRole.Customer)
+                await telegramService.SendInlineMenuAsync(telegramContext.ChatId, supportCaption
+                    , await MenuBuilder.CreateSupportMenu(localization), cancellationToken);
 
 
         }

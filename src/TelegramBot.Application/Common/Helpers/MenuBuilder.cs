@@ -19,7 +19,7 @@ namespace TelegramBot.Application.Common.Helpers
                 new[]
                 {
                     InlineKeyboardButton.WithCallbackData(await localization.TranslateAsync(TranslationKeys.MenuProfile), BotCommands.ProfileMenu),
-                    InlineKeyboardButton.WithCallbackData(await localization.TranslateAsync(TranslationKeys.MenuSupport), "menu_support")
+                    InlineKeyboardButton.WithCallbackData(await localization.TranslateAsync(TranslationKeys.MenuSupport), BotCommands.SupportMenu)
                 },
                 new[]
                 {
@@ -27,7 +27,27 @@ namespace TelegramBot.Application.Common.Helpers
                 }
             });
         }
-
+        public static async Task<InlineKeyboardMarkup> CreateSupportMenu(
+            ILocalizationService localization)
+        {
+            return new InlineKeyboardMarkup(new[]
+            {
+                new[]
+                {
+                    InlineKeyboardButton.WithCallbackData(
+                        await localization.TranslateAsync(TranslationKeys.SupportNewTicket),
+                        BotCommands.SupportNewTicket
+                    )
+                },
+                new[]
+                {
+                    InlineKeyboardButton.WithCallbackData(
+                        await localization.TranslateAsync(TranslationKeys.SupportMyTickets),
+                        BotCommands.SupportMyTickets
+                    )
+                }
+            });
+        }
         public static async Task<InlineKeyboardMarkup> CreateProfileMenu(ILocalizationService localization)
         {
             return new InlineKeyboardMarkup(new[]

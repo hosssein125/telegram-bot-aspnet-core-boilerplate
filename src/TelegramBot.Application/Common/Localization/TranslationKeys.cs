@@ -6,6 +6,9 @@ namespace TelegramBot.Application.Common.Localization
         public const string MenuProfile = "menu.profile";
         public const string MenuOrders = "menu.orders";
         public const string MenuSupport = "menu.support";
+        public const string CaptionSupport = "caption.support";
+        public const string SupportNewTicket = "menu.new_ticket";
+        public const string SupportMyTickets = "menu.my_tickets";
         public const string MenuHelp = "menu.help";
         public const string AdminUsers = "admin.users";
         public const string AdminServers = "admin.servers";
@@ -16,7 +19,7 @@ namespace TelegramBot.Application.Common.Localization
         public const string PayCard = "pay.card";
         public const string PayCrypto = "pay.crypto";
         public const string MenuBack = "menu.back";
-        public const string Greeting = "greeting";
-        public const string CustomerProfile = "customer-profile";
+        public const string CaptionGreeting = "caption.greeting";
+        public const string CaptionCustomerProfile = "caption.customer_profile";
     }
 }
