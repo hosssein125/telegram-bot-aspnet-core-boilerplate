@@ -42,7 +42,7 @@ namespace TelegramBot.Application.Telegram.Handlers
 
             // Send greeting to customer
             if (user.Role == UserRole.Customer)
-                await telegramService.SendInlineMenuAsync(telegramContext.ChatId, await localization.TranslateAsync(TranslationKeys.Greeting)
+                await telegramService.SendInlineMenuAsync(telegramContext.ChatId, await localization.TranslateAsync(TranslationKeys.CaptionGreeting)
                     , await MenuBuilder.CreateMainMenu(localization), cancellationToken);
 
         }

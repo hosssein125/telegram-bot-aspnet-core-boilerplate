@@ -19,6 +19,12 @@ msgstr "📦 Orders"
 msgid "menu.support"
 msgstr "🎫 Support"
 
+msgid "menu.new_ticket"
+msgstr "🎫 Create New Ticket"
+
+msgid "menu.my_tickets"
+msgstr "📂 My Tickets"
+
 msgid "menu.help"
 msgstr "❓ Help"
 
@@ -49,9 +55,11 @@ msgstr "🔙 Back"
 msgid "menu.add_balance"
 msgstr "➕ Add Balance"
 
-msgid "greeting"
+msgid "caption.greeting"
 msgstr "━━━━━━━━━━━━━━━━\n\n👋 Hello and welcome!\n\nWelcome to our VPN sales bot 🚀\nHere you can easily browse and purchase fast, secure, and stable services.\n\n📌 To get started, please choose an option from the menu.\n💬 If you have any questions, our support team is here to help.\n\n━━━━━━━━━━━━━━━━"
 
-msgid "customer-profile"
+msgid "caption.customer_profile"
 msgstr "━━━━━━━━━━━━━━━━\n\n👤 *Your Profile*\n\n🧾 First name: {0}\n🧾 Last name: {1}\n🆔 Telegram ID: {2}\n👤 Username: @{3}\n\n💰 Balance: {4}\n📦 Orders count: {5}\n📅 Joined: {6} days ago\n\n━━━━━━━━━━━━━━━━"
 
+msgid "caption.support"
+msgstr "━━━━━━━━━━━━━━━━\n\n🛟 Support\n\nIf you have any questions, issues, or requests, our support team is here to help 🤝\n\n📌 To submit a new request, please choose \"Create New Ticket\" from the menu.\n📂 To follow up on your previous requests and view replies, tap the \"My Tickets\" button.\n\n💬 Your message will be reviewed as quickly as possible.\n\n━━━━━━━━━━━━━━━━"
